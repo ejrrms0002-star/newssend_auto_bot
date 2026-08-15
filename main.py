@@ -1,4 +1,3 @@
-Python
 import os
 import feedparser
 import telebot
