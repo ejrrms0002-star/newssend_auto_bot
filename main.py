@@ -3,15 +3,14 @@ import feedparser
 import telebot
 import yfinance as yf
 
-# GitHub Secrets에서 정보 불러오기
-TOKEN = os.environ.get("8202610345:AAHOegOJo2OxnazBZR-FVJkiMkW490Rho_k")
-CHAT_ID = os.environ.get("271408530")
+# GitHub Secrets에서 가져오기
+TOKEN = os.environ.get("TELEGRAM_TOKEN")
+CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 bot = telebot.TeleBot(TOKEN)
 
 
 def get_hot_news():
-    """구글 뉴스 RSS 주요 뉴스 top 5"""
     rss_url = "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko"
     feed = feedparser.parse(rss_url)
 
@@ -22,7 +21,6 @@ def get_hot_news():
 
 
 def get_market_report():
-    """주요 증시 지수 조회"""
     tickers = {"코스피": "^KS11", "S&P 500": "^GSPC", "나스닥": "^IXIC"}
     market_text = "📊 **오늘의 주요 증시 요약**\n\n"
 
